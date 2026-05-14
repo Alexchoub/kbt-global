@@ -313,7 +313,7 @@ function Entreprises() {
 
   <span className="pill">Filiale KBT Global</span>
 
-</div>
+      </div>
       </div>
     </>
   );
