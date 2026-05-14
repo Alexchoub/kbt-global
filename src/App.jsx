@@ -724,26 +724,7 @@ function showToast(title, text){
     setToast(null);
   }, 2500);
 }
-function login() {
-  if (!username.trim()) return;
 
- localStorage.setItem("kbt-user", username);
-const admins = ["admin","kenneth"];
-
-localStorage.setItem(
-  "kbt-role",
-  admins.includes(username.toLowerCase())
-    ? "admin"
-    : "employe"
-);
-
-showToast(
-  "Connexion réussie",
-  "Bienvenue sur le panel KBT Global."
-);
-
-setIsLogged(true);
-}
 function renderPage() {
   if (page === "dashboard") return <Dashboard />;
   if (page === "entreprises") return <Entreprises />;
@@ -791,9 +772,13 @@ async function login() {
     .from("users")
     .select("*")
     .eq("username", username)
-    .single();
+   .maybeSingle();
+    console.log("LOGIN DATA:", data);
+console.log("LOGIN ERROR:", error);
+console.log("PASSWORD:", password);
 
-  if (error || !data) {
+  console.log(data, error);
+    if (error || !data) {
     showToast(
       "Accès refusé",
       "Utilisateur introuvable."
