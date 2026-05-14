@@ -850,11 +850,8 @@ console.log("PASSWORD:", password);
   function renderPage() {
     if (page === "users") {
     if (String(role).trim().toLowerCase() !== "admin") {
-  return <AccessDenied />;
-}
-
-  return <Utilisateurs showToast={showToast} />;
-}
+   return <AccessDenied />;}
+   return <Utilisateurs showToast={showToast} />;}
     if (page === "dashboard") return <Dashboard />;
     if (page === "entreprises") return <Entreprises />;
     if (page === "employes") return <Employes />;
