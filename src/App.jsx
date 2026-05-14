@@ -834,9 +834,8 @@ function renderPage() {
   if (page === "tchat") return <Tchat showToast={showToast} />;
   if (page === "comptabilite") {
   if (role !== "admin") {
-    return (
-     return <AccessDenied />;
-  }
+  return <AccessDenied />;
+}
 
   return <Comptabilite showToast={showToast} />;
 }
