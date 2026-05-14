@@ -969,11 +969,9 @@ return (
 </div>
 
         <div className="sidebar-nav">
-          {pages
+        {pages
   .filter((p) => {
-    const cleanRole = String(role).trim().toLowerCase();
-
-    if (cleanRole === "admin") return true;
+    if (role === "admin") return true;
 
     return (
       p.id !== "comptabilite" &&
