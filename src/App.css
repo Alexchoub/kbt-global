@@ -1578,4 +1578,24 @@ background-image:
 
 .access-denied .muted{
   color:#ffb3b3;
+}.role-badge{
+  margin:18px 0 26px;
+
+  padding:10px 14px;
+
+  border:1px solid rgba(255,255,255,.08);
+
+  border-radius:14px;
+
+  background:rgba(255,255,255,.03);
+
+  color:#9fb4d3;
+
+  font-size:14px;
+
+  font-weight:600;
+
+  text-transform:capitalize;
+
+  backdrop-filter:blur(10px);
 }
