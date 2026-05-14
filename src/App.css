@@ -1559,4 +1559,23 @@ background-image:
     opacity:1;
     transform:none;
   }
+}.access-denied{
+  border-color:
+    rgba(255,80,80,.25) !important;
+
+  background:
+    rgba(255,80,80,.05) !important;
+
+  text-align:center;
+
+  padding:40px;
+}
+
+.access-denied h2{
+  color:#ff7b7b;
+  margin-bottom:14px;
+}
+
+.access-denied .muted{
+  color:#ffb3b3;
 }

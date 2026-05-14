@@ -65,6 +65,17 @@ const employees = [
   { name: "Responsable Diamond Casino", role: "Direction filiale" },
   { name: "Comptable", role: "Finance" },
 ];
+function AccessDenied() {
+  return (
+    <div className="card form-card access-denied">
+      <h2>🔒 Accès refusé</h2>
+
+      <p className="muted">
+        Vous ne disposez pas des permissions nécessaires pour accéder à cette section.
+      </p>
+    </div>
+  );
+}
 function Dashboard() {
   const [serverLoad, setServerLoad] = useState(72);
 
@@ -824,13 +835,7 @@ function renderPage() {
   if (page === "comptabilite") {
   if (role !== "admin") {
     return (
-      <div className="card form-card">
-        <h2>Accès refusé</h2>
-        <p className="muted">
-          Cette section est réservée à la direction KBT Global.
-        </p>
-      </div>
-    );
+     return <AccessDenied />;
   }
 
   return <Comptabilite showToast={showToast} />;
