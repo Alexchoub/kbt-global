@@ -852,6 +852,16 @@ console.log("PASSWORD:", password);
     if (String(role).trim().toLowerCase() !== "admin") {
    return <AccessDenied />;}
    return <Utilisateurs showToast={showToast} />;}
+   if (page === "users") {
+  return (
+    <div className="card form-card">
+      <h2>Gestion utilisateurs</h2>
+      <p className="muted">
+        Zone admin sécurisée.
+      </p>
+    </div>
+  );
+}
     if (page === "dashboard") return <Dashboard />;
     if (page === "entreprises") return <Entreprises />;
     if (page === "employes") return <Employes />;
@@ -968,12 +978,14 @@ return (
         <div className="sidebar-nav">
         {pages
   .filter((p) => {
-    if (role === "admin") return true;
+    if (String(role).trim().toLowerCase() === "admin") {
+  return true;
+}
 
     return (
       p.id !== "comptabilite" &&
-      p.id !== "users" &&
-      p.id !== "employes"
+      p.id !== "employes" &&
+      p.id !== "users"
     );
   })
   .map((p) => (

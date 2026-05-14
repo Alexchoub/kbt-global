@@ -1598,4 +1598,45 @@ background-image:
   text-transform:capitalize;
 
   backdrop-filter:blur(10px);
+}.role-badge{
+  margin:18px 0 26px;
+
+  padding:10px 14px;
+
+  border-radius:14px;
+
+  background:rgba(255,255,255,.03);
+
+  border:1px solid rgba(255,255,255,.08);
+
+  color:#9fb4d3;
+
+  font-size:14px;
+
+  font-weight:600;
+
+  text-align:center;
+
+  backdrop-filter:blur(10px);
+}
+.role-badge{
+  margin:18px 0 26px;
+
+  padding:10px 14px;
+
+  border-radius:14px;
+
+  background:rgba(255,255,255,.03);
+
+  border:1px solid rgba(255,255,255,.08);
+
+  color:#9fb4d3;
+
+  font-size:14px;
+
+  font-weight:600;
+
+  text-align:center;
+
+  backdrop-filter:blur(10px);
 }
