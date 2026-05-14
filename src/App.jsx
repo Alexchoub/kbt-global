@@ -708,7 +708,7 @@ const [toast, setToast] = useState(null);
 const [time, setTime] = useState(
   new Date().toLocaleTimeString()
 );
-
+const [password, setPassword] = React.useState("");
 useEffect(() => {
   const interval = setInterval(() => {
     setTime(new Date().toLocaleTimeString());
@@ -724,25 +724,39 @@ function showToast(title, text){
     setToast(null);
   }, 2500);
 }
-function login() {
-  if (!username.trim()) return;
+async function login() {
 
- localStorage.setItem("kbt-user", username);
-const admins = ["admin","kenneth"];
+  const { data, error } = await supabase
+    .from("users")
+    .select("*")
+    .eq("username", username)
+    .single();
 
-localStorage.setItem(
-  "kbt-role",
-  admins.includes(username.toLowerCase())
-    ? "admin"
-    : "employe"
-);
+  if (error || !data) {
+    showToast(
+      "Accès refusé",
+      "Utilisateur introuvable."
+    );
+    return;
+  }
 
-showToast(
-  "Connexion réussie",
-  "Bienvenue sur le panel KBT Global."
-);
+  if (data.password !== password) {
+    showToast(
+      "Accès refusé",
+      "Mot de passe incorrect."
+    );
+    return;
+  }
 
-setIsLogged(true);
+  localStorage.setItem("kbt-user", data.username);
+  localStorage.setItem("kbt-role", data.role);
+
+  showToast(
+    "Connexion réussie",
+    `Bienvenue ${data.username}`
+  );
+
+  setIsLogged(true);
 }
 function renderPage() {
   if (page === "dashboard") return <Dashboard />;
@@ -855,6 +869,17 @@ if (!isLogged) {
             }}
           />
         </div>
+        <div className="field" style={{ marginTop: 18 }}>
+  <label>Mot de passe</label>
+
+  <input
+    type="password"
+    placeholder="••••••••"
+    value={password}
+    onChange={(e) => setPassword(e.target.value)}
+  />
+</div>
+
 
         <button
           className="btn btn--pill btn--light"
