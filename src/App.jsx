@@ -724,39 +724,25 @@ function showToast(title, text){
     setToast(null);
   }, 2500);
 }
-async function login() {
+function login() {
+  if (!username.trim()) return;
 
-  const { data, error } = await supabase
-    .from("users")
-    .select("*")
-    .eq("username", username)
-    .single();
+ localStorage.setItem("kbt-user", username);
+const admins = ["admin","kenneth"];
 
-  if (error || !data) {
-    showToast(
-      "Accès refusé",
-      "Utilisateur introuvable."
-    );
-    return;
-  }
+localStorage.setItem(
+  "kbt-role",
+  admins.includes(username.toLowerCase())
+    ? "admin"
+    : "employe"
+);
 
-  if (data.password !== password) {
-    showToast(
-      "Accès refusé",
-      "Mot de passe incorrect."
-    );
-    return;
-  }
+showToast(
+  "Connexion réussie",
+  "Bienvenue sur le panel KBT Global."
+);
 
-  localStorage.setItem("kbt-user", data.username);
-  localStorage.setItem("kbt-role", data.role);
-
-  showToast(
-    "Connexion réussie",
-    `Bienvenue ${data.username}`
-  );
-
-  setIsLogged(true);
+setIsLogged(true);
 }
 function renderPage() {
   if (page === "dashboard") return <Dashboard />;
@@ -799,11 +785,32 @@ if (loading) {
 
 
 
-function login() {
+async function login() {
 
-  if (!username.trim()) return;
+  const { data, error } = await supabase
+    .from("users")
+    .select("*")
+    .eq("username", username)
+    .single();
 
-  localStorage.setItem("kbt-user", username);
+  if (error || !data) {
+    showToast(
+      "Accès refusé",
+      "Utilisateur introuvable."
+    );
+    return;
+  }
+
+  if (data.password !== password) {
+    showToast(
+      "Accès refusé",
+      "Mot de passe incorrect."
+    );
+    return;
+  }
+
+  localStorage.setItem("kbt-user", data.username);
+  localStorage.setItem("kbt-role", data.role);
 
   setIsLogged(true);
 }
