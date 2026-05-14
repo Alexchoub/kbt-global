@@ -956,36 +956,6 @@ background-image:
   pointer-events:none;
 }
 
-@keyframes loginAppear{
-  from{
-    opacity:0;
-    transform:translateY(20px) scale(.98);
-  }
-
-  to{
-    opacity:1;
-    transform:none;
-  }
-}
-/* GRID FUTURISTE */
-
- .auth-page::before{
-  content:"";
-  position:absolute;
-  inset:0;
-
-  background-image:
-    linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
-
-  background-size:60px 60px;
-
-  mask-image:
-    radial-gradient(circle at center, black 30%, transparent 90%);
-
-  pointer-events:none;
-}
-
 /* DECOR LOGIN */
 
 .auth-page::after{
@@ -1572,6 +1542,17 @@ background-image:
     transform:
       translateY(-10px)
       translateX(20px);
+  }
+
+  to{
+    opacity:1;
+    transform:none;
+  }
+}
+@keyframes loginAppear{
+  from{
+    opacity:0;
+    transform:translateY(20px) scale(.98);
   }
 
   to{
