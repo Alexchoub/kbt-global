@@ -40,12 +40,6 @@ const pages = [
   },
 
   {
-    id: "employes",
-    label: "Employés",
-    icon: <Users size={18} />
-  },
-
-  {
     id: "tchat",
     label: "Tchat",
     icon: <MessageSquare size={18} />
@@ -873,7 +867,6 @@ console.log("PASSWORD:", password);
 }
     if (page === "dashboard") return <Dashboard />;
     if (page === "entreprises") return <Entreprises />;
-    if (page === "employes") return <Employes />;
     if (page === "tchat") return <Tchat />;
     if (page === "comptabilite") return <Comptabilite />;
     return <Entreprises />;
