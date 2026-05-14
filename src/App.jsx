@@ -849,8 +849,7 @@ console.log("PASSWORD:", password);
 }
   function renderPage() {
     if (page === "users") {
-
-  if (role !== "admin") {
+    if (role !== "admin") {
     return <AccessDenied />;
   }
 
