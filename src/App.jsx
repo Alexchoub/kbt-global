@@ -1020,18 +1020,17 @@ return (
 
         <div className="sidebar-nav">
           {pages
-          
-  .filter((p) =>
-    role === "admin"
-      ? true
-      : (
-          p.id !== "comptabilite" &&
-          p.id !== "users" &&
-          p.id !== "employes"
-        )
-  )
+  .filter((p) => {
+    if (role === "admin") return true;
+
+    return (
+      p.id !== "comptabilite" &&
+      p.id !== "users" &&
+      p.id !== "employes"
+    );
+  })
   .map((p) => (
-          
+
             <button
               key={p.id}
               className={`sidebar-link ${
