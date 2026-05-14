@@ -272,7 +272,27 @@ function Entreprises() {
   <span className="pill">Filiale KBT Global</span>
 </a>
 
-        <div className="card form-card enterprise-card reveal is-in">
+        <a
+  href="https://sites.google.com/view/garagelscustoms/accueil?authuser=0"
+  target="_blank"
+  rel="noreferrer"
+  className="card form-card enterprise-card reveal is-in"
+>
+  <img
+    src={lscLogo}
+    alt="Los Santos Customs"
+    style={{ width: "100%", maxHeight: 220, objectFit: "contain", borderRadius: 16, marginBottom: 14 }}
+  />
+
+  <h2>Los Santos Customs</h2>
+
+  <p className="muted">
+    Garage automobile spécialisé dans la personnalisation,
+    préparation moteur, réparations et services premium.
+  </p>
+
+  <span className="pill">Filiale KBT Global</span>
+</a>
           <img src={lscLogo} alt="Los Santos Customs" style={{ width: "100%", maxHeight: 220, objectFit: "contain", borderRadius: 16, marginBottom: 14 }} />
           <h2>Los Santos Customs</h2>
           <p className="muted">Garage automobile spécialisé dans la personnalisation, préparation moteur, réparations et services premium.</p>
