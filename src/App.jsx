@@ -1011,8 +1011,7 @@ return (
         <div className="sidebar-nav">
 
           {pages
-  .filter((p) =>
-    {pages
+  
   .filter((p) =>
     role === "admin"
       ? true
