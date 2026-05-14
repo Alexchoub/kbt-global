@@ -813,63 +813,6 @@ function showToast(title, text){
     setToast(null);
   }, 2500);
 }
-
-function renderPage() {
-  if (page === "users") {
-
-  if (role !== "admin") {
-    return (
-      <div className="card form-card">
-        <h2>Accès refusé</h2>
-        <p className="muted">
-          Réservé aux administrateurs.
-        </p>
-      </div>
-    );
-  }
-
-  return <Utilisateurs showToast={showToast} />;
-}
-  if (page === "dashboard") return <Dashboard />;
-  if (page === "entreprises") return <Entreprises />;
-  if (page === "employes") {
-
-  if (role !== "admin") {
-    return <AccessDenied />;
-  }
-
-  return <Employes showToast={showToast} />;
-  }
-  if (page === "tchat") return <Tchat showToast={showToast} />;
-  if (page === "comptabilite") {
-  if (role !== "admin") {
-  return <AccessDenied />;
-}
-
-  return <Comptabilite showToast={showToast} />;
-}
-
-  return <Dashboard />;
-}
-function logout() {
-  localStorage.removeItem("kbt-user");
-  setIsLogged(false);
-}
-if (loading) {
-  return (
-    <div className="splash">
-      <img src={kbtLogo} alt="KBT Global" />
-      <h1>KBT Global</h1>
-      <p>Chargement en cours...</p>
-    </div>
-    
-  );
-}
-
-
-
-
-
 async function login() {
 
   const { data, error } = await supabase
@@ -905,6 +848,14 @@ console.log("PASSWORD:", password);
   setIsLogged(true);
 }
   function renderPage() {
+    if (page === "users") {
+
+  if (role !== "admin") {
+    return <AccessDenied />;
+  }
+
+  return <Utilisateurs showToast={showToast} />;
+}
     if (page === "dashboard") return <Dashboard />;
     if (page === "entreprises") return <Entreprises />;
     if (page === "employes") return <Employes />;
