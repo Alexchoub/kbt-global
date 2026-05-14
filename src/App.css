@@ -963,7 +963,9 @@ background-image:
     transparent 90%);
 
   pointer-events:none;
-}/* DECOR LOGIN */
+}
+
+/* DECOR LOGIN */
 
 .auth-page::after{
   content:"";
