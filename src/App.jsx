@@ -849,9 +849,9 @@ console.log("PASSWORD:", password);
 }
   function renderPage() {
     if (page === "users") {
-    if (role !== "admin") {
-    return <AccessDenied />;
-  }
+    if (String(role).trim().toLowerCase() !== "admin") {
+  return <AccessDenied />;
+}
 
   return <Utilisateurs showToast={showToast} />;
 }
