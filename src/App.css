@@ -843,23 +843,14 @@ overflow:hidden;
   background:
     radial-gradient(
       circle,
-      rgba(75,143,255,.18),
+    rgba(75,143,255,.18),
       transparent 60%
     );
 
   opacity:.6;
   pointer-events:none;
 }
-@keyframes loginAppear{
-  from{
-    opacity:0;
-    transform:translateY(20px) scale(.98);
-  }
-  to{
-    opacity:1;
-    transform:none;
-  }
-}
+
 .login img{
   width:90px;
   margin-bottom:18px;
@@ -926,28 +917,59 @@ background-image:
   margin-bottom:22px;
   background:rgba(75,143,255,.06);
 }
-/* BACKGROUND LOGIN */
+/* LOGIN CLEAN */
 
 .auth-page{
   min-height:100vh;
+  width:100%;
   display:flex;
   align-items:center;
   justify-content:center;
   position:relative;
   overflow:hidden;
+  background:#030712;
+}
 
-  background:
-    radial-gradient(circle at top,
-      rgba(75,143,255,.10),
-      transparent 30%),
-    radial-gradient(circle at bottom right,
-      rgba(75,143,255,.06),
-      transparent 35%),
-    #030712;
+.auth-page::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background-image:
+    linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
+  background-size:60px 60px;
+  pointer-events:none;
+}
+
+.login{
+  position:relative;
+  overflow:hidden;
+  animation:loginAppear .6s ease;
+}
+
+.login::before{
+  content:"";
+  position:absolute;
+  inset:-40%;
+  background:radial-gradient(circle, rgba(75,143,255,.18), transparent 60%);
+  opacity:.6;
+  pointer-events:none;
+}
+
+@keyframes loginAppear{
+  from{
+    opacity:0;
+    transform:translateY(20px) scale(.98);
+  }
+
+  to{
+    opacity:1;
+    transform:none;
+  }
 }
 /* GRID FUTURISTE */
 
-.auth-page::before{
+ .auth-page::before{
   content:"";
   position:absolute;
   inset:0;
@@ -958,9 +980,8 @@ background-image:
 
   background-size:60px 60px;
 
-  mask-image:radial-gradient(circle at center,
-    black 30%,
-    transparent 90%);
+  mask-image:
+    radial-gradient(circle at center, black 30%, transparent 90%);
 
   pointer-events:none;
 }
