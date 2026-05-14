@@ -262,12 +262,21 @@ function Entreprises() {
       </section>
 
       <div className="grid">
-        <div className="card form-card enterprise-card reveal is-in">
-          <img src={ammuLogo} alt="Ammu-Nation" style={{ width: "100%", maxHeight: 220, objectFit: "contain", borderRadius: 16, marginBottom: 14 }} />
-          <h2>Ammu-Nation</h2>
-          <p className="muted">Armurerie, équipements spécialisés, accessoires et fournitures professionnelles.</p>
-          <span className="pill">Filiale KBT Global</span>
-        </div>
+        <a
+  href="http://node.wavescloud.fr:40150/login"
+  target="_blank"
+  rel="noreferrer"
+  className="card form-card enterprise-card reveal is-in"
+>
+  <img
+    src={ammuLogo}
+    alt="Ammu-Nation"
+    style={{ width: "100%", maxHeight: 220, objectFit: "contain", borderRadius: 16, marginBottom: 14 }}
+  />
+  <h2>Ammu-Nation</h2>
+  <p className="muted">Armurerie, équipements spécialisés, accessoires et fournitures professionnelles.</p>
+  <span className="pill">Filiale KBT Global</span>
+</a>
 
         <div className="card form-card enterprise-card reveal is-in">
           <img src={lscLogo} alt="Los Santos Customs" style={{ width: "100%", maxHeight: 220, objectFit: "contain", borderRadius: 16, marginBottom: 14 }} />
