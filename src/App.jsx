@@ -1012,14 +1012,18 @@ return (
 
           {pages
   .filter((p) =>
-    role === "admin" ||
-    (
-  p.id !== "comptabilite" &&
-  p.id !== "users" &&
-  p.id !== "employes"
-)
+    {pages
+  .filter((p) =>
+    role === "admin"
+      ? true
+      : (
+          p.id !== "comptabilite" &&
+          p.id !== "users" &&
+          p.id !== "employes"
+        )
   )
   .map((p) => (
+
 
             <button
               key={p.id}
