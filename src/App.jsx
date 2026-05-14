@@ -1019,18 +1019,7 @@ return (
 </div>
 
         <div className="sidebar-nav">
-          {pages
-  .filter((p) => {
-    if (role === "admin") return true;
-
-    return (
-      p.id !== "comptabilite" &&
-      p.id !== "users" &&
-      p.id !== "employes"
-    );
-  })
-  .map((p) => (
-
+          {pages.map((p) => (
             <button
               key={p.id}
               className={`sidebar-link ${
