@@ -1019,7 +1019,19 @@ return (
 </div>
 
         <div className="sidebar-nav">
-          {pages.map((p) => (
+          {pages
+  .filter((p) => {
+    const cleanRole = String(role).trim().toLowerCase();
+
+    if (cleanRole === "admin") return true;
+
+    return (
+      p.id !== "comptabilite" &&
+      p.id !== "users" &&
+      p.id !== "employes"
+    );
+  })
+  .map((p) => (
             <button
               key={p.id}
               className={`sidebar-link ${
