@@ -1014,12 +1014,13 @@ return (
         <div className="sidebar-logo">
           KBT Global
         </div>
+        <div style={{ color: "red" }}>
+  ROLE ACTUEL : {role}
+</div>
 
         <div className="sidebar-nav">
           {pages
-          <div style={{ color: "red" }}>
-  ROLE ACTUEL : {role}
-</div>
+          
   .filter((p) =>
     role === "admin"
       ? true
