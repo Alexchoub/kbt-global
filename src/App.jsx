@@ -830,7 +830,14 @@ function renderPage() {
 }
   if (page === "dashboard") return <Dashboard />;
   if (page === "entreprises") return <Entreprises />;
-  if (page === "employes") return <Employes showToast={showToast} />;
+  if (page === "employes") {
+
+  if (role !== "admin") {
+    return <AccessDenied />;
+  }
+
+  return <Employes showToast={showToast} />;
+  }
   if (page === "tchat") return <Tchat showToast={showToast} />;
   if (page === "comptabilite") {
   if (role !== "admin") {
@@ -1006,7 +1013,11 @@ return (
           {pages
   .filter((p) =>
     role === "admin" ||
-    (p.id !== "comptabilite" && p.id !== "users")
+    (
+  p.id !== "comptabilite" &&
+  p.id !== "users" &&
+  p.id !== "employes"
+)
   )
   .map((p) => (
 
