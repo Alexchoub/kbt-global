@@ -23,6 +23,11 @@ import diamondLogo from "./assets/diamond-logo.png";
 
 const pages = [
   {
+   id: "users",
+   label: "Utilisateurs",
+   icon: <Users size={18} />
+  },
+  {
     id: "dashboard",
     label: "Dashboard",
     icon: <LayoutDashboard size={18} />
@@ -372,6 +377,77 @@ function Employes({ showToast }) {
         ))}
       </div>
     </>
+  );
+}
+function Utilisateurs({ showToast }) {
+
+  const [newUsername, setNewUsername] = React.useState("");
+  const [newPassword, setNewPassword] = React.useState("");
+  const [newRole, setNewRole] = React.useState("employe");
+
+  async function createUser() {
+
+    const { error } = await supabase
+      .from("users")
+      .insert({
+        username: newUsername,
+        password: newPassword,
+        role: newRole
+      });
+
+    if (error) {
+      showToast(
+        "Erreur",
+        "Impossible de créer l'utilisateur."
+      );
+      return;
+    }
+
+    showToast(
+      "Succès",
+      "Utilisateur créé."
+    );
+
+    setNewUsername("");
+    setNewPassword("");
+    setNewRole("employe");
+  }
+
+  return (
+    <div className="card form-card">
+      <h2>Créer un utilisateur</h2>
+
+      <input
+        placeholder="Pseudo"
+        value={newUsername}
+        onChange={(e) => setNewUsername(e.target.value)}
+      />
+
+      <input
+        type="password"
+        placeholder="Mot de passe"
+        value={newPassword}
+        onChange={(e) => setNewPassword(e.target.value)}
+        style={{ marginTop: 12 }}
+      />
+
+      <select
+        value={newRole}
+        onChange={(e) => setNewRole(e.target.value)}
+        style={{ marginTop: 12 }}
+      >
+        <option value="employe">Employé</option>
+        <option value="admin">Admin</option>
+      </select>
+
+      <button
+        className="btn-primary"
+        style={{ marginTop: 18 }}
+        onClick={createUser}
+      >
+        Créer
+      </button>
+    </div>
   );
 }
 
@@ -726,6 +802,21 @@ function showToast(title, text){
 }
 
 function renderPage() {
+  if (page === "users") {
+
+  if (role !== "admin") {
+    return (
+      <div className="card form-card">
+        <h2>Accès refusé</h2>
+        <p className="muted">
+          Réservé aux administrateurs.
+        </p>
+      </div>
+    );
+  }
+
+  return <Utilisateurs showToast={showToast} />;
+}
   if (page === "dashboard") return <Dashboard />;
   if (page === "entreprises") return <Entreprises />;
   if (page === "employes") return <Employes showToast={showToast} />;
@@ -909,7 +1000,10 @@ return (
         <div className="sidebar-nav">
 
           {pages
-  .filter((p) => role === "admin" || p.id !== "comptabilite")
+  .filter((p) =>
+    role === "admin" ||
+    (p.id !== "comptabilite" && p.id !== "users")
+  )
   .map((p) => (
 
             <button
