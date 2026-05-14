@@ -1014,8 +1014,8 @@ return (
         <div className="sidebar-logo">
           KBT Global
         </div>
-        <div style={{ color: "red" }}>
-  ROLE ACTUEL : {role}
+       <div className="role-badge">
+  Rôle : {role}
 </div>
 
         <div className="sidebar-nav">
