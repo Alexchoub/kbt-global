@@ -790,7 +790,9 @@ const [isLogged, setIsLogged] = React.useState(() => {
     : false;
 });
 const [username, setUsername] = React.useState("");
-const role = localStorage.getItem("kbt-role") || "employe";
+const [role, setRole] = React.useState(
+  localStorage.getItem("kbt-role") || "employe"
+);
 const [toast, setToast] = useState(null);
 const [time, setTime] = useState(
   new Date().toLocaleTimeString()
@@ -898,6 +900,7 @@ console.log("PASSWORD:", password);
 
   localStorage.setItem("kbt-user", data.username);
   localStorage.setItem("kbt-role", data.role);
+  setRole(data.role);
 
   setIsLogged(true);
 }
@@ -912,6 +915,10 @@ console.log("PASSWORD:", password);
 
   function logout() {
   localStorage.removeItem("kbt-user");
+  localStorage.removeItem("kbt-role");
+
+  setRole("employe");
+
   setIsLogged(false);
 }
 
