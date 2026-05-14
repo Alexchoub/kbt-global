@@ -288,9 +288,7 @@ function Entreprises() {
 
   <p className="muted">
     Garage automobile spécialisé dans la personnalisation,
-    préparation moteur, réparations et services premium.
-  </p>
-
+    préparation moteur, réparations et services premium.</p>
   <span className="pill">Filiale KBT Global</span>
 </a>
           <img src={lscLogo} alt="Los Santos Customs" style={{ width: "100%", maxHeight: 220, objectFit: "contain", borderRadius: 16, marginBottom: 14 }} />
