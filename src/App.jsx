@@ -1016,7 +1016,6 @@ return (
         </div>
 
         <div className="sidebar-nav">
-
           {pages
   .filter((p) =>
     role === "admin"
@@ -1028,8 +1027,6 @@ return (
         )
   )
   .map((p) => (
-
-
             <button
               key={p.id}
               className={`sidebar-link ${
